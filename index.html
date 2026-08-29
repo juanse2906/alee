@@ -1,0 +1,1093 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Alee 🪄</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500;600&display=swap');
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 10%,#244d75 0%,#102b46 30%,#061321 65%,#01050b 100%);
+  color:#eee8d7;
+  font-family:"EB Garamond",serif;
+  overflow-x:hidden;
+}
+
+.screen{
+  min-height:100vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:30px 18px;
+  position:relative;
+  z-index:5;
+}
+
+.screen.active{
+  display:flex;
+}
+
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:white;
+  animation:twinkle 2.5s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.15;transform:scale(.5)}
+  to{opacity:1;transform:scale(1.5)}
+}
+
+#fog{
+  position:fixed;
+  left:-20%;
+  bottom:-50px;
+  width:140%;
+  height:180px;
+  z-index:3;
+  pointer-events:none;
+  opacity:.13;
+  background:radial-gradient(ellipse,#dce7eb 0%,rgba(210,225,230,.4) 35%,transparent 70%);
+  filter:blur(25px);
+  animation:fog 13s ease-in-out infinite alternate;
+}
+
+@keyframes fog{
+  from{transform:translateX(-7%)}
+  to{transform:translateX(7%)}
+}
+
+.moon{
+  position:absolute;
+  width:110px;
+  height:110px;
+  top:7%;
+  right:8%;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fffef2,#dfdfd1 55%,#bfc0b6);
+  box-shadow:0 0 40px rgba(255,255,235,.35),0 0 100px rgba(210,225,255,.12);
+}
+
+.intro{
+  width:100%;
+  max-width:650px;
+  text-align:center;
+  animation:appear 1.3s ease;
+}
+
+@keyframes appear{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.crest{
+  width:125px;
+  height:125px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:62px;
+  background:radial-gradient(circle,#1d4c76,#071625 72%);
+  border:2px solid #cbb56f;
+  box-shadow:0 0 35px rgba(100,160,220,.25),inset 0 0 30px rgba(0,0,0,.5);
+  cursor:pointer;
+  animation:glow 4s infinite alternate;
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 20px rgba(100,160,220,.15)}
+  to{box-shadow:0 0 55px rgba(100,160,220,.4)}
+}
+
+.school{
+  font-family:"Cinzel",serif;
+  color:#d5bf7b;
+  font-size:11px;
+  letter-spacing:3px;
+  line-height:1.7;
+}
+
+h1,h2{
+  font-family:"Cinzel",serif;
+}
+
+h1{
+  margin:15px 0;
+  font-size:clamp(45px,12vw,78px);
+  color:#ead798;
+}
+
+.subtitle{
+  font-size:22px;
+  color:#dce4ed;
+  margin-bottom:35px;
+}
+
+.tiny{
+  font-size:13px;
+  letter-spacing:2px;
+  color:#a9b8c8;
+}
+
+.gold-line{
+  width:90px;
+  height:1px;
+  margin:20px auto;
+  background:#cbb56f;
+}
+
+.magic-btn{
+  padding:14px 25px;
+  border:1px solid #c1aa68;
+  border-radius:5px;
+  background:linear-gradient(135deg,#153b5d,#071827);
+  color:#f4e9c9;
+  font-family:"Cinzel",serif;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.magic-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 30px rgba(210,190,110,.3);
+}
+
+.sound-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:1px solid #c1aa68;
+  background:#071827;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  z-index:100;
+}
+
+/* SOBRE */
+
+.envelope-container{
+  width:100%;
+  max-width:650px;
+  text-align:center;
+  animation:appear 1s ease;
+}
+
+.envelope{
+  width:320px;
+  height:210px;
+  position:relative;
+  margin:35px auto 25px;
+}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#1b456c,#091b2e);
+  border:1px solid #c4ac69;
+  border-radius:5px;
+}
+
+.letter-inside{
+  position:absolute;
+  left:25px;
+  right:25px;
+  bottom:15px;
+  height:160px;
+  background:linear-gradient(135deg,#f0dfb4,#dcbf82);
+  z-index:2;
+  transition:.9s;
+}
+
+.mini-letter{
+  font-size:45px;
+  padding-top:40px;
+}
+
+.envelope-front{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:#102f4c;
+  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+}
+
+.flap{
+  position:absolute;
+  inset:0;
+  z-index:6;
+  background:linear-gradient(135deg,#28567e,#102d49);
+  clip-path:polygon(0 0,100% 0,50% 55%);
+  transform-origin:top center;
+  transition:.8s;
+}
+
+.envelope.open .flap{
+  transform:rotateX(180deg);
+}
+
+.envelope.open .letter-inside{
+  transform:translateY(-95px);
+}
+
+.wax-seal{
+  position:absolute;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  z-index:10;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle,#4d7395,#102b46);
+  border:3px solid #d9c477;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.wax-seal.magic{
+  animation:seal .9s forwards;
+}
+
+@keyframes seal{
+  0%{transform:translate(-50%,-50%) scale(1)}
+  40%{transform:translate(-50%,-50%) scale(1.4);box-shadow:0 0 40px #d9c477}
+  100%{transform:translate(-50%,-50%) scale(2);opacity:0}
+}
+
+.envelope-text{
+  font-size:20px;
+}
+
+/* CARTA */
+
+.parchment{
+  width:100%;
+  max-width:680px;
+  padding:42px 30px;
+  position:relative;
+  background:linear-gradient(135deg,#dfca94,#f5e5bd,#d3b775);
+  color:#292218;
+  border-radius:4px;
+  box-shadow:0 20px 70px rgba(0,0,0,.7);
+  animation:appear 1s ease;
+}
+
+.parchment h2{
+  text-align:center;
+  color:#24476a;
+  font-size:30px;
+}
+
+.parchment p{
+  font-size:20px;
+  line-height:1.55;
+}
+
+.parchment strong{
+  color:#24476a;
+}
+
+.center{
+  text-align:center;
+}
+
+.signature{
+  text-align:center;
+  color:#24476a;
+  font-size:25px;
+  margin:25px;
+}
+
+/* SOMBRERO */
+
+.sorting-card,.secret-card{
+  width:100%;
+  max-width:620px;
+  padding:42px 25px;
+  text-align:center;
+  background:rgba(5,20,35,.94);
+  border:1px solid rgba(190,170,105,.5);
+  border-radius:10px;
+  box-shadow:0 20px 70px rgba(0,0,0,.6);
+  animation:appear 1s ease;
+}
+
+.hat{
+  font-size:90px;
+  margin:15px 0;
+  animation:hat 3s ease-in-out infinite;
+}
+
+@keyframes hat{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-8px) rotate(2deg)}
+}
+
+#sortingText{
+  min-height:35px;
+  font-size:22px;
+}
+
+#house{
+  margin:25px 0;
+  font-family:"Cinzel",serif;
+  font-size:clamp(35px,10vw,65px);
+  color:#d2e0ef;
+  opacity:0;
+}
+
+#house.show{
+  animation:house 1.2s forwards;
+}
+
+@keyframes house{
+  0%{opacity:0;transform:scale(.7)}
+  60%{opacity:1;transform:scale(1.12)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+#houseMessage{
+  display:none;
+  font-size:21px;
+  line-height:1.5;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* SECRETO */
+
+.secret-symbol{
+  font-size:55px;
+}
+
+.secret-card h2{
+  color:#e5d18d;
+  font-size:30px;
+}
+
+.secret-card p{
+  font-size:21px;
+  line-height:1.55;
+}
+
+.secret-highlight{
+  font-family:"Cinzel",serif;
+  color:#e5d18d;
+}
+
+/* FINAL */
+
+.final-card{
+  width:100%;
+  max-width:650px;
+  text-align:center;
+  animation:appear 1.2s ease;
+}
+
+.final-raven{
+  width:115px;
+  height:115px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:58px;
+  background:radial-gradient(circle,#1c4a74,#071625);
+  border:2px solid #cbb56f;
+  box-shadow:0 0 45px rgba(100,160,220,.3);
+}
+
+.final-card h2{
+  color:#e6d391;
+  font-size:clamp(28px,7vw,43px);
+}
+
+.age{
+  font-family:"Cinzel",serif;
+  color:#d7c27d;
+  font-size:45px;
+}
+
+.final-card p{
+  font-size:22px;
+  line-height:1.5;
+}
+
+.special{
+  font-family:"Cinzel",serif;
+  color:#e7d494;
+  font-size:26px!important;
+}
+
+.final-stars{
+  color:#d6c17d;
+  font-size:25px;
+  margin:30px 0;
+}
+
+.ending{
+  margin-top:35px;
+  font-size:30px;
+  letter-spacing:10px;
+}
+
+.magic-particle{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#dcc77b;
+  pointer-events:none;
+  z-index:100;
+  animation:particle 1.5s ease-out forwards;
+}
+
+@keyframes particle{
+  from{
+    opacity:1;
+    transform:translate(0,0) scale(1);
+  }
+  to{
+    opacity:0;
+    transform:translate(var(--x),var(--y)) scale(.1);
+  }
+}
+
+@media(max-width:500px){
+
+  .moon{
+    width:80px;
+    height:80px;
+  }
+
+  .screen{
+    padding:25px 14px;
+  }
+
+  .crest{
+    width:105px;
+    height:105px;
+    font-size:52px;
+  }
+
+  .school{
+    font-size:9px;
+    letter-spacing:1.8px;
+  }
+
+  .envelope{
+    width:290px;
+    height:190px;
+  }
+
+  .parchment{
+    padding:38px 22px;
+  }
+
+  .parchment p{
+    font-size:18px;
+  }
+
+  .sorting-card,.secret-card{
+    padding:34px 18px;
+  }
+
+  .final-card p{
+    font-size:20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="fog"></div>
+
+<button class="sound-btn" id="soundBtn">🔊</button>
+
+<!-- INICIO -->
+
+<section id="home" class="screen active">
+
+  <div class="moon"></div>
+
+  <div class="intro">
+
+    <div class="crest" id="crest">🦅</div>
+
+    <div class="school">
+      HOGWARTS SCHOOL OF<br>
+      WITCHCRAFT AND WIZARDRY
+    </div>
+
+    <div class="gold-line"></div>
+
+    <h1>Para Alee</h1>
+
+    <p class="subtitle">
+      Una pequeña sorpresa ha llegado para ti...
+    </p>
+
+    <button class="magic-btn" id="startBtn">
+      Abrir carta 🦉
+    </button>
+
+    <p class="tiny">
+      ✦ Una correspondencia especial ✦
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- SOBRE -->
+
+<section id="envelopeScreen" class="screen">
+
+  <div class="envelope-container">
+
+    <div class="school">
+      CORRESPONDENCIA ESPECIAL
+    </div>
+
+    <h2 style="color:#e5d18d">
+      Una carta para ti
+    </h2>
+
+    <div class="envelope" id="envelope">
+
+      <div class="letter-inside">
+        <div class="mini-letter">✨</div>
+      </div>
+
+      <div class="envelope-back"></div>
+      <div class="flap"></div>
+      <div class="envelope-front"></div>
+
+      <div class="wax-seal" id="waxSeal">
+        🦅
+      </div>
+
+    </div>
+
+    <p class="envelope-text" id="envelopeText">
+      El sello solo puede romperse con magia...
+    </p>
+
+    <button class="magic-btn" id="sealBtn">
+      Romper el sello 🪄
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- CARTA -->
+
+<section id="letter" class="screen">
+
+  <div class="parchment">
+
+    <div style="text-align:center;font-size:42px">
+      🦉
+    </div>
+
+    <div class="school" style="text-align:center;color:#284c70">
+      CARTA PERSONAL
+    </div>
+
+    <h2>Querida Alee:</h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      Hoy cumples <strong>20</strong>, y quería aprovechar
+      este día para dejarte un pequeño mensaje.
+    </p>
+
+    <p>
+      Espero que esta nueva etapa venga llena de momentos
+      bonitos, sueños cumplidos y muchas razones para sonreír.
+    </p>
+
+    <p>
+      Y, sobre todo, nunca dejes de ser tú.
+      Sigue siendo esa persona increíble, auténtica
+      y especial que eres.
+    </p>
+
+    <p class="center">
+      <strong>
+        Feliz cumpleaños, Alee. 🦅💙
+      </strong>
+    </p>
+
+    <p class="center">
+      Que nunca te falte un poquito de magia
+      en el camino. ✨
+    </p>
+
+    <div class="signature">
+      ✦ 🪄 ✦
+    </div>
+
+    <div style="text-align:center">
+
+      <button class="magic-btn" id="sortingBtn">
+        El Sombrero tiene algo que decirte 🎩
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SOMBRERO -->
+
+<section id="sorting" class="screen">
+
+  <div class="sorting-card">
+
+    <div class="school">
+      EL SOMBRERO SELECCIONADOR
+    </div>
+
+    <div class="hat">🎩</div>
+
+    <p id="sortingText">
+      Hmm... veamos dónde perteneces...
+    </p>
+
+    <button class="magic-btn" id="sortBtn">
+      Descubrir mi casa
+    </button>
+
+    <div id="house"></div>
+
+    <p id="houseMessage">
+      La curiosidad, la creatividad y la inteligencia
+      también tienen su propia magia.
+    </p>
+
+    <button class="magic-btn hidden" id="secretBtn">
+      Espera... 👀
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- SECRETO -->
+
+<section id="secret" class="screen">
+
+  <div class="secret-card">
+
+    <div class="secret-symbol">✨</div>
+
+    <div class="school">
+      MENSAJE OCULTO
+    </div>
+
+    <h2>
+      Una última magia...
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+      Hay personas que simplemente hacen que
+      el mundo sea un poquito más bonito
+      siendo ellas mismas.
+    </p>
+
+    <p>
+      Y tú eres una de esas personas.
+    </p>
+
+    <p class="secret-highlight">
+      Nunca cambies eso. 💙
+    </p>
+
+    <button class="magic-btn" id="secretContinue">
+      Continuar ✨
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section id="final" class="screen">
+
+  <div class="final-card">
+
+    <div class="final-raven">
+      🦅
+    </div>
+
+    <div class="school">
+      UNA ÚLTIMA COSA
+    </div>
+
+    <div class="gold-line"></div>
+
+    <h2>
+      Feliz cumpleaños,
+      <span>Alee</span> 💙
+    </h2>
+
+    <div class="age">
+      20
+    </div>
+
+    <p>
+      Ojalá esta nueva etapa esté llena de cosas bonitas,
+      aventuras que valga la pena recordar y muchos
+      momentos felices.
+    </p>
+
+    <p>
+      Y nunca olvides algo:
+    </p>
+
+    <p class="special">
+      Sigue siendo tú misma.
+    </p>
+
+    <p>
+      Porque eso es precisamente lo que te hace especial.
+    </p>
+
+    <div class="final-stars">
+      ✦　✧　✦
+    </div>
+
+    <p>
+      Que nunca te falte un poquito de magia
+      en el camino. 🪄
+    </p>
+
+    <div class="ending">
+      🦅 • 💙 • ✨
+    </div>
+
+    <p class="tiny">
+      Hecho especialmente para ti.
+    </p>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* ESTRELLAS */
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+  const star=document.createElement("div");
+
+  star.className="star";
+
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.animationDelay=Math.random()*3+"s";
+
+  stars.appendChild(star);
+}
+
+
+/* CAMBIO DE PANTALLA */
+
+function showScreen(id){
+
+  document.querySelectorAll(".screen")
+    .forEach(s=>s.classList.remove("active"));
+
+  document.getElementById(id)
+    .classList.add("active");
+
+  window.scrollTo(0,0);
+}
+
+
+/* PARTÍCULAS */
+
+function magic(x,y){
+
+  for(let i=0;i<55;i++){
+
+    const p=document.createElement("div");
+
+    p.className="magic-particle";
+
+    p.style.left=x+"px";
+    p.style.top=y+"px";
+
+    p.style.setProperty(
+      "--x",
+      ((Math.random()-.5)*350)+"px"
+    );
+
+    p.style.setProperty(
+      "--y",
+      (-50-Math.random()*250)+"px"
+    );
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>p.remove(),1900);
+  }
+}
+
+
+/* INICIO */
+
+document.getElementById("startBtn")
+.addEventListener("click",()=>{
+
+  magic(innerWidth/2,innerHeight/2);
+
+  setTimeout(
+    ()=>showScreen("envelopeScreen"),
+    500
+  );
+
+});
+
+
+/* SOBRE */
+
+let opened=false;
+
+function openLetter(){
+
+  if(opened)return;
+
+  opened=true;
+
+  const seal=document.getElementById("waxSeal");
+
+  const rect=seal.getBoundingClientRect();
+
+  magic(
+    rect.left+rect.width/2,
+    rect.top+rect.height/2
+  );
+
+  seal.classList.add("magic");
+
+  document.getElementById("sealBtn")
+    .style.display="none";
+
+  document.getElementById("envelopeText")
+    .textContent=
+    "La magia está a punto de comenzar... ✨";
+
+  setTimeout(
+    ()=>document.getElementById("envelope")
+      .classList.add("open"),
+    600
+  );
+
+  setTimeout(
+    ()=>showScreen("letter"),
+    1800
+  );
+}
+
+document.getElementById("sealBtn")
+.addEventListener("click",openLetter);
+
+document.getElementById("waxSeal")
+.addEventListener("click",openLetter);
+
+
+/* CARTA */
+
+document.getElementById("sortingBtn")
+.addEventListener(
+  "click",
+  ()=>showScreen("sorting")
+);
+
+
+/* SOMBRERO */
+
+let sorting=false;
+
+document.getElementById("sortBtn")
+.addEventListener("click",()=>{
+
+  if(sorting)return;
+
+  sorting=true;
+
+  const btn=document.getElementById("sortBtn");
+
+  btn.style.display="none";
+
+  const text=document.getElementById("sortingText");
+
+  const phrases=[
+    "Hmm... interesante...",
+    "Veo curiosidad...",
+    "Veo creatividad...",
+    "Una mente que nunca deja de descubrir...",
+    "Hay algo especial aquí...",
+    "Ya lo tengo..."
+  ];
+
+  let i=0;
+
+  const interval=setInterval(()=>{
+
+    text.textContent=phrases[i++];
+
+    if(i>=phrases.length){
+
+      clearInterval(interval);
+
+      setTimeout(()=>{
+
+        magic(innerWidth/2,innerHeight/2);
+
+        const house=document.getElementById("house");
+
+        house.textContent="RAVENCLAW 🦅";
+        house.classList.add("show");
+
+        document.getElementById("houseMessage")
+          .style.display="block";
+
+        document.getElementById("secretBtn")
+          .classList.remove("hidden");
+
+      },700);
+    }
+
+  },750);
+
+});
+
+
+/* SECRETO */
+
+document.getElementById("secretBtn")
+.addEventListener("click",()=>{
+
+  magic(innerWidth/2,innerHeight/2);
+
+  setTimeout(
+    ()=>showScreen("secret"),
+    450
+  );
+
+});
+
+
+/* FINAL */
+
+document.getElementById("secretContinue")
+.addEventListener("click",()=>{
+
+  magic(innerWidth/2,innerHeight/2);
+
+  setTimeout(
+    ()=>showScreen("final"),
+    450
+  );
+
+});
+
+
+/* ESCUDO */
+
+let clicks=0;
+
+document.getElementById("crest")
+.addEventListener("click",()=>{
+
+  clicks++;
+
+  magic(innerWidth/2,innerHeight/2);
+
+  if(clicks>=3){
+
+    alert(
+      "✨ La magia siempre encuentra su camino. 🦅"
+    );
+
+    clicks=0;
+  }
+
+});
+
+
+/* BOTÓN DE SONIDO */
+
+document.getElementById("soundBtn")
+.addEventListener("click",()=>{
+
+  alert(
+    "🪄 La música mágica estará disponible próximamente."
+  );
+
+});
+
+</script>
+
+</body>
+</html>
+```
