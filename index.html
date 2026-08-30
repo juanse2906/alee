@@ -803,7 +803,9 @@ body{
 
 
 <body>
-
+<audio id="bgMusic" loop preload="auto">
+  <source src="magia.mp3" type="audio/mpeg">
+</audio>
 <!-- CIELO -->
 
 <div class="sky">
@@ -1366,7 +1368,13 @@ document
 document
 .getElementById("start")
 .addEventListener("click",()=>{
+  
+const music = document.getElementById("bgMusic");
 
+music.volume = 0.30;
+
+music.play().catch(() => {});
+  
   const rect=
     document.getElementById("start")
     .getBoundingClientRect();
