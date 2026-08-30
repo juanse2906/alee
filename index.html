@@ -1434,31 +1434,28 @@ document
 .getElementById("sound")
 .addEventListener("click",()=>{
 
-  soundEnabled=!soundEnabled;
+  const music =
+    document.getElementById("bgMusic");
 
-  if(soundEnabled){
+  if(music.muted){
 
-    document.getElementById("sound")
+    music.muted=false;
+
+    document
+      .getElementById("sound")
       .textContent="🔊";
-
-    if(!audioContext){
-
-      audioContext=
-        new (window.AudioContext||
-        window.webkitAudioContext)();
-
-    }
-
-    magicalSound();
 
   }else{
 
-    document.getElementById("sound")
+    music.muted=true;
+
+    document
+      .getElementById("sound")
       .textContent="🔇";
+
   }
 
 });
-
 
 /* =================================
    INICIO
@@ -1700,11 +1697,7 @@ async function typeLetter(){
 
 setTimeout(typeLetter,1000);
 
-  
-/* =================================
-   SOMBRERO
-================================= */
- function typeText(element, message, speed=45){
+  function typeText(element, message, speed=45){
 
   element.textContent="";
 
@@ -1722,7 +1715,10 @@ setTimeout(typeLetter,1000);
 
   },speed);
 
-}   
+}
+/* =================================
+   SOMBRERO
+================================= */   
   
 document
 .getElementById("sortingButton")
