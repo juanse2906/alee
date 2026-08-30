@@ -1267,7 +1267,7 @@ function magic(x,y){
 ================================= */
 
 let audioContext=null;
-let soundEnabled=false;
+let soundEnabled=true;
 
 function magicalSound(){
 
@@ -1727,9 +1727,41 @@ document
          house.textContent=
   "RAVENCLAW 🦅";
 
+const music =
+  document.getElementById("bgMusic");
+
+const originalVolume =
+  music.volume;
+
+music.volume = originalVolume * 0.20;
+
 ravenclawSound();
 
 house.classList.add("show");
+
+setTimeout(()=>{
+
+  let volume =
+    music.volume;
+
+  const fadeBack =
+    setInterval(()=>{
+
+      volume += 0.01;
+
+      if(volume >= originalVolume){
+
+        volume = originalVolume;
+
+        clearInterval(fadeBack);
+
+      }
+
+      music.volume = volume;
+
+    },100);
+
+},2200);
 
           document
             .getElementById("houseDescription")
