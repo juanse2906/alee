@@ -1700,7 +1700,26 @@ async function typeLetter(){
 
 setTimeout(typeLetter,1000);
 
+function typeText(element, message, speed=45){
 
+  element.textContent="";
+
+  let i=0;
+
+  const typing=setInterval(()=>{
+
+    element.textContent+=message[i];
+
+    i++;
+
+    if(i>=message.length){
+      clearInterval(typing);
+    }
+
+  },speed);
+
+} 
+  
 /* =================================
    SOMBRERO
 ================================= */
@@ -1832,8 +1851,11 @@ setTimeout(()=>{
             .getElementById("secretButton")
             .style.display="inline-block";
 
-          text.textContent=
-            "El Sombrero ha tomado su decisión...";
+          typeText(
+  text,
+  "El Sombrero ha tomado su decisión...",
+  45
+);
 
         },700);
 
