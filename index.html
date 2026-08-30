@@ -488,8 +488,38 @@ body{
   border-radius:3px;
   box-shadow:0 25px 80px rgba(0,0,0,.65);
   position:relative;
+
+  opacity:0;
+  transform:translateY(30px) scale(.96);
+  animation:parchmentReveal 1.2s ease forwards;
 }
 
+  @keyframes parchmentReveal{
+
+  0%{
+    opacity:0;
+    transform:
+      translateY(40px)
+      scale(.92)
+      rotateX(8deg);
+    filter:blur(5px);
+  }
+
+  60%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1)
+      rotateX(0);
+    filter:blur(0);
+  }
+
+}
+  
 .parchment:before,
 .parchment:after{
   content:"✦";
@@ -1576,10 +1606,26 @@ function openLetter(){
 
   },500);
 
-  setTimeout(
-    ()=>screen("letterScreen"),
-    1700
+  setTimeout(()=>{
+
+  magic(
+    window.innerWidth/2,
+    window.innerHeight/2
   );
+
+  const envelope =
+    document.getElementById("envelope");
+
+  envelope.style.transform =
+    "scale(1.08)";
+
+  setTimeout(()=>{
+
+    screen("letterScreen");
+
+  },500);
+
+},1700);
 
 }
 
