@@ -1129,7 +1129,7 @@ body{
     </h2>
 
     <div class="age">
-      20
+      20 añitos
     </div>
 
     <p>
@@ -1371,9 +1371,25 @@ document
   
 const music = document.getElementById("bgMusic");
 
-music.volume = 0.30;
+music.volume = 0;
 
-music.play().catch(() => {});
+music.play().then(() => {
+
+  let volume = 0;
+
+  const fadeIn = setInterval(() => {
+
+    volume += 0.01;
+
+    music.volume = volume;
+
+    if (volume >= 0.30) {
+      clearInterval(fadeIn);
+    }
+
+  }, 130);
+
+}).catch(() => {});
   
   const rect=
     document.getElementById("start")
