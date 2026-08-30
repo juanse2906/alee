@@ -1700,7 +1700,11 @@ async function typeLetter(){
 
 setTimeout(typeLetter,1000);
 
-function typeText(element, message, speed=45){
+  
+/* =================================
+   SOMBRERO
+================================= */
+ function typeText(element, message, speed=45){
 
   element.textContent="";
 
@@ -1718,12 +1722,8 @@ function typeText(element, message, speed=45){
 
   },speed);
 
-} 
+}   
   
-/* =================================
-   SOMBRERO
-================================= */
-
 document
 .getElementById("sortingButton")
 .addEventListener("click",()=>{
